@@ -1,0 +1,25 @@
+<div class="container">
+
+  <h2 class="text-center">
+    {{room$ | async}}
+  </h2>
+  <form (ngSubmit)="addPost(newPost.value); newPost.value = ''">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Say something new..." #newPost>
+      <span class="input-group-btn">
+        <button class="btn btn-secondary" type="submit">Submit</button>
+      </span>
+    </div>
+    {{newPost.focus()}}
+  </form>
+
+  <div *ngFor="let post of posts$ | async" class="card mb-3">
+    <div class="card-header">
+      <div class="blockquote-footer">{{post.displayName}} at {{post.timestamp | date:"short"}}</div>
+    </div>
+    <div class="card-body">
+      <img class="float-left userimg" src="{{post.photoURL}}">
+      <span class="blockquote">{{post.message}}</span>
+    </div>
+  </div>
+</div>
