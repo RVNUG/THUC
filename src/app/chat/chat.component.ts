@@ -32,6 +32,7 @@ export class ChatComponent implements OnInit {
   addPost(message) {
     const user = this.auth.auth.currentUser;
 
+    
     this.roomCollection.add({
       uid: user.uid,
       displayName: user.displayName,
